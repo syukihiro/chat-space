@@ -8,6 +8,7 @@
 - Association
 has_many :members
 has_many :group, through: :members
+has_many :messages
 
 ## groupテーブル
 |Column|Type|Options|
@@ -15,19 +16,21 @@ has_many :group, through: :members
 |name|string|null: false, index: true|
 
 - Association
-belongs_to :user<br>
+has_many :members
+has_many :users, through: :members
+has_many :messages
 
 #### messageテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text|
 |image|string|
 |users_id|integer|null: false, foreign_key|
 |group_id|integer|null: false, foreign_key|
 
 - Association
-has_many :members
-has_many :group, through: :members
+belongs_to :group  
+belongs_to :user  
 
 #### membersテーブル
 |Column|Type|Options|
@@ -36,5 +39,5 @@ has_many :group, through: :members
 |group_id|integer|null: false, foreign_key: true|
 
 - Association
-belongs_to :group<br>
-belongs_to :user<br>
+belongs_to :group  
+belongs_to :user  
