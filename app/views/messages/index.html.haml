@@ -1,0 +1,57 @@
+.wrapper
+  .contents
+    .notification
+    .chat-side
+      .chat-side__side--contents
+        .chat-side__user
+          .chat-side__name
+            sawada
+          .chat-side__actions
+            .chat-side_action
+              = link_to root_path do
+                %i.fa.fa-cog.fa-lg
+              = link_to root_path do
+                %i.fa.fa-pencil-square-o.fa-lg
+
+      .chat-side__groups
+        .chat-side__group
+          %p.chat-side__group-name
+            テスト
+          %p.chat-side__group-message
+            まだメッセージはありません
+          %p.chat-side__group-name
+            テスト
+          %p.chat-side__group-message
+            まだメッセージはありません
+    .chat-main
+      .chat-main__header
+        .chat-main__header--left
+          .chat-main__header--group-name
+            %p sawady
+        .chat-main__header--right
+          %a.btn{href: '/'}
+            .btn-edit
+              Edit
+        %p.chat-main__header--members
+          Members:
+          %i sawada
+      .chat-main__body
+        %p.chat-main__body--name
+          sawada
+        %p.chat-main__body--time
+          2019/5/20 14:07:34
+        .chat-main__body--messages
+          テスト
+        %p.chat-main__body--name
+          sawada
+        %p.chat-main__body--time
+          2019/5/20 14:07:34
+        .chat-main__body--messages
+          テスト
+      .chat-main__footer
+        %form.footer__form
+          %input.message{type: "text", placeholder: "type a message"}
+          %label{for: "message-image"}
+            %input.image{type: "file", accept: "image/*", id: "message-image"}
+            %i.fa.fa-picture-o
+          %input.submit{type: "submit", value: "Send"}
