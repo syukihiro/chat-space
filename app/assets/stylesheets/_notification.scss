@@ -1,7 +1,13 @@
 @import 'variable';
 .notification {
-  width:100%;
-  background-color: $SummerSky;
-  text-align: center;
-  line-height: 30px;
+  .notice{
+    background-color: $SummerSky;
+    text-align: center;
+    line-height: 30px;
+  }
+  .alert{
+    background-color:$orange;
+    color:$white;
+    text-align: center;
+  }
 } 
