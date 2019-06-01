@@ -5,12 +5,12 @@
       .chat-side__side--contents
         .chat-side__user
           .chat-side__name
-            sawada
+            = current_user.name
           .chat-side__actions
             .chat-side_action
               = link_to root_path do
                 %i.fa.fa-cog.fa-lg
-              = link_to root_path do
+              = link_to edit_user_path(current_user) do
                 %i.fa.fa-pencil-square-o.fa-lg
 
       .chat-side__groups
