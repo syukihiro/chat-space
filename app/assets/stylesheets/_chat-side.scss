@@ -44,10 +44,15 @@
   &__group-name {
     padding-top: 20px;
     font-size: 15px;
+    color:$white;
+    text-decoration: none;
   }
+
   &__group-message {
     padding-top: 5px;
     padding-bottom:40px;
     font-size: 11px;
+    color:$white;
+    text-decoration: none;
   }
 } 

@@ -8,21 +8,19 @@
             = current_user.name
           .chat-side__actions
             .chat-side_action
-              = link_to root_path do
-                %i.fa.fa-cog.fa-lg
               = link_to edit_user_path(current_user) do
+                %i.fa.fa-cog.fa-lg
+              = link_to new_group_path do
                 %i.fa.fa-pencil-square-o.fa-lg
 
       .chat-side__groups
         .chat-side__group
-          %p.chat-side__group-name
-            テスト
-          %p.chat-side__group-message
-            まだメッセージはありません
-          %p.chat-side__group-name
-            テスト
-          %p.chat-side__group-message
-            まだメッセージはありません
+          - current_user.groups.each do |group|
+            = link_to group_messages_path(group) do
+              %p.chat-side__group-name
+                = group.name
+              %p.chat-side__group-message
+                まだメッセージはありません
     .chat-main
       .chat-main__header
         .chat-main__header--left
