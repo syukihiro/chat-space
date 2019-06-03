@@ -1,55 +1,25 @@
-.wrapper
-  .contents
-    .notification
-    .chat-side
-      .chat-side__side--contents
-        .chat-side__user
-          .chat-side__name
-            = current_user.name
-          .chat-side__actions
-            .chat-side_action
-              = link_to edit_user_path(current_user) do
-                %i.fa.fa-cog.fa-lg
-              = link_to new_group_path do
-                %i.fa.fa-pencil-square-o.fa-lg
 
-      .chat-side__groups
-        .chat-side__group
-          - current_user.groups.each do |group|
-            = link_to group_messages_path(group) do
-              %p.chat-side__group-name
-                = group.name
-              %p.chat-side__group-message
-                まだメッセージはありません
-    .chat-main
-      .chat-main__header
-        .chat-main__header--left
-          .chat-main__header--group-name
-            %p sawady
-        .chat-main__header--right
-          %a.btn{href: '/'}
-            .btn-edit
-              Edit
-        %p.chat-main__header--members
-          Members:
-          %i sawada
-      .chat-main__body
-        %p.chat-main__body--name
-          sawada
-        %p.chat-main__body--time
-          2019/5/20 14:07:34
-        .chat-main__body--messages
-          テスト
-        %p.chat-main__body--name
-          sawada
-        %p.chat-main__body--time
-          2019/5/20 14:07:34
-        .chat-main__body--messages
-          テスト
-      .chat-main__footer
-        %form.footer__form
-          %input.message{type: "text", placeholder: "type a message"}
-          %label{for: "message-image"}
-            %input.image{type: "file", accept: "image/*", id: "message-image"}
-            %i.fa.fa-picture-o
-          %input.submit{type: "submit", value: "Send"}
+= render 'groups/chat-side'
+.chat-main
+  .chat-main__header
+    .chat-main__header--left
+      .chat-main__header--group-name
+        %p a
+    .chat-main__header--right
+      %a.btn{href: '/'}
+        .btn-edit
+          Edit
+    %p.chat-main__header--members
+      Members:
+      %i
+        - @group.users.each do |user|
+          = user.name
+  .chat-main__body
+    = render @messages
+  .chat-main__footer
+    = form_for [@group,@message],:html => {:class => 'footer__form'} do |f|
+      = f.text_field :body,class:"message", placeholder: "type a message"
+      = f.label :image,class:"label" do
+        = fa_icon 'picture-o'
+      = f.file_field :image, class:'image'
+      = f.submit "submit" ,class:"submit"

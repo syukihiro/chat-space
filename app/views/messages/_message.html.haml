@@ -1,0 +1,9 @@
+.chat{ "data-message-id": "#{message.id}"}
+%p.chat-main__body--name
+  = message.user.name
+%p.chat-main__body--time
+  = message.created_at.strftime("%Y/%m/%d %H:%M")
+.chat-main__body--messages
+  - if message.body.present?
+    = message.body
+  = image_tag message.image.url, class: 'lower-message__image' if message.image.present? 
