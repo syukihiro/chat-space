@@ -1,21 +1,23 @@
 class GroupsController < ApplicationController
-    def index
   
-    end
+  before_action :set_group, only: [ :edit, :update]
+
+  def index
+  end
   
-    def new
-      @group  = Group.new
-      @group.users << current_user
-    end
+  def new
+    @group  = Group.new
+    @group.users << current_user
+  end
   
-    def create
+  def create
       @group = Group.new(group_params)
-      if @group.save
-        redirect_to root_path, notice:'グループを作成しました'
-      else
-        render :new
-      end
+    if @group.save
+      redirect_to root_path, notice:'グループを作成しました'
+    else
+      render :new
     end
+  end
 
     def update
       if @group.update(group_params)
@@ -26,7 +28,6 @@ class GroupsController < ApplicationController
     end
   
    def edit
-
    end
 
   

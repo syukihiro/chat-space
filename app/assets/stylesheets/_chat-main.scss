@@ -62,6 +62,7 @@
     padding: 46px 40px 0px 40px;
     height: calc(100vh - 280px);
     background-color: $Snow;
+    overflow: scroll;
   }
 
   &__body--name {
@@ -97,17 +98,17 @@
       input.message {
         display: inline-block;
         float: left;
-        width: calc(100% - 115px);
+        width: calc(100% - 130px);
         border: none;
         height: 50px;
         position: relative;
         padding-left:10px;
       }
 
-      label {
+      label.label {
         position: absolute;
         top: 13px;
-        right: 115px;
+        right: 130px;
       }
       input.image {
         display: none;
