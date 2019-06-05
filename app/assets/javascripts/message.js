@@ -12,12 +12,8 @@ $(function(){
           <div class="chat-main__body--messages">
           ${message.text}
           </div>`
-      if (message.image.url == null) {
-          html
-      }else{
-          html = image
-      }
-      return html;
+       message.image.url == null ?  html : html += image
+       return html
   }
   $(".footer__form").on("submit",function (e) {
       e.preventDefault();
@@ -33,9 +29,10 @@ $(function(){
       })
           .done(function (data) {
               var html = buildHTML(data);
+              console.log(html)
               $('.chat-main__body').append(html)
               $('.chat-main__body').animate({ scrollTop: $('.chat-main__body')[0].scrollHeight }, 'slow');
-              $('#message_body,#message_image').val('')
+              $('form')[0].reset();
               $('.submit').prop('disabled', false);
           })
           .fail(function () {
