@@ -6,9 +6,7 @@
       .chat-main__header--group-name
         %p a
     .chat-main__header--right
-      %a.btn{href: '/'}
-        .btn-edit
-          Edit
+      = link_to "Edit", edit_group_path(@group), class: 'btn'
     %p.chat-main__header--members
       Members:
       %i

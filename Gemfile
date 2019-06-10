@@ -56,6 +56,8 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'pry-rails'
+gem 'pry-byebug'
 
 group :development do 
      gem 'rspec'
@@ -68,3 +70,4 @@ end
 group :production do 
      gem 'unicorn'
 end
+

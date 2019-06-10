@@ -41,22 +41,21 @@
     height: 40px;
   }
 
-  a.btn {
-    text-decoration: none;
-    .btn-edit {
+
+  .btn{
       display: inline-block;
       padding: 10px 20px 10px 20px;
       text-decoration: none;
       color: #67c5ff;
       border: solid 2px $MayaBlue;
-      transition: .4s;
-    }
-
-    .btn-edit:hover {
+      transition: .4s;   
+    .btn:hover {
       background: $MayaBlue;
       color: white;
     }
   }
+
+
 
   &__body {
     padding: 46px 40px 0px 40px;
