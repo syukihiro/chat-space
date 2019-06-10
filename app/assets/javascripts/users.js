@@ -30,17 +30,20 @@ $(document).on('turbolinks:load', function() {
           data: {keyword: input},
           dataType: 'json'
       })
-          .done(function (data) {
-              $('#user-search-result').empty();
-              data.length !== 0 ? data.forEach(function (user) {
-                appendUser(user)
-                  }) :
-                  appendNouser('一致するユーザがいません');
-              })
-          .fail(function () {
-              alert('ユーザ検索に失敗しました')
-          })
-  });
+      .done(function (data) {
+        $('#user-search-result').empty();
+        if (data.length !== 0) {
+            data.forEach(function (user) {
+                appendUser(user);
+            });
+        } else {
+            appendNouser('一致するユーザがいません');
+        }
+    })
+    .fail(function () {
+        alert('ユーザ検索に失敗しました')
+    })
+});
   $(document).on('click', '.user-search-add', function () {
       var userId = $(this).data('user-id');
       var userName = $(this).data('user-name');
