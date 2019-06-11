@@ -1,4 +1,4 @@
-.chat{ "data-message-id": "#{message.id}"}
+.chat{data: {message_id: "#{message.id}"}}
 %p.chat-main__body--name
   = message.user.name
 %p.chat-main__body--time
@@ -6,4 +6,4 @@
 .chat-main__body--messages
   - if message.body.present?
     = message.body
-  = image_tag message.image.url, class: 'lower-message__image' if message.image.present? 
+  = image_tag "#{message.image.url}", class: 'lower-message__image' if message.image.present? 
