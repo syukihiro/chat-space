@@ -14,7 +14,7 @@ $(function(){
           ${message.text}
           </div>`
        message.image.url == null ?  html : html += image
-       return html
+       return html;
   }
   $(".footer__form").on("submit",function (e) {
       e.preventDefault();
@@ -26,13 +26,13 @@ $(function(){
           data: formData,
           dataType: "json",
           processData: false,
-          contentType: false
+          contentType: false,
       })
           .done(function (data) {
               var html = buildHTML(data);
               $('.chat-main__body').append(html)
               $('.chat-main__body').animate({ 
-                scrollTop: $('.chat-main__body')[0].scrollHeight 
+                scrollTop: $('.chat-main__body')[0].scrollHeight
               }, 'fast');
               $('form')[0].reset();
               $('.submit').prop('disabled', false);
@@ -43,9 +43,10 @@ $(function(){
       })
   })
   var reloadMessages = (function(){
+    if (window.location.pathname.match(/\/groups\/\d+\/messages/)) {
     var last_message_id = $('.chat:last').data('message-id');
     var group_id = $('.chat-main').data('group-id');
-    var url = `/groups/${group_id}/api/messages`
+    var url = `/groups/${group_id}/api/messages`;
     $.ajax({
       url: url,
       type: 'get',
@@ -56,13 +57,13 @@ $(function(){
     messages.forEach(function (message) {
         var insertHTML = buildHTML(message);
         $('.chat-main__body').append(insertHTML);
-        $('.chat-main__body').animate({ scrollTop: $('.chat-main__body')[0].scrollHeight 
-        });
-      });
+        $('.chat-main__body').animate({ scrollTop: $('.chat-main__body')[0].scrollHeight});
+      })
     })
     .fail(function(){
       alert('error');
-    })
+      });
+    }
   })
   setInterval(reloadMessages, 5000);
 });
