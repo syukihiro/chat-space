@@ -22,7 +22,7 @@
       = f.label :チャットメンバー, class: 'chat-group-form__label user_search_field', placeholder: 'チャットメンバーを追加'
     .chat-group-form__field--right
       #chat-group-users
-        = render 'chat-group-user', group: @group
+        = render 'chat-group-user', { group: @group }
   .chat-group-form__field.clearfix
     .chat-group-form__field--right
       = f.submit class: 'chat-group-form__action-btn'
